@@ -1,0 +1,109 @@
+<!doctype html>
+<head>
+  <title>Conscience</title>
+  <link rel='stylesheet'  href='//fonts.googleapis.com/css?family=Raleway:400,300,600'>
+  <link rel='stylesheet' href='/static/css/normalize.css'>
+  <link rel='stylesheet' href='/static/css/skeleton.css'>
+  <link rel='stylesheet' href='/static/css/style.css'>
+</head>
+<body>
+  <div class='container'>
+    <h1> Conscience </h1>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Pool</th>
+          <th>q1_acc</th>
+          <th>q1_f1score</th>
+          <th>q2_f1score</th>
+          <th>q2_log_loss</th>
+          <th>q3_f1score</th>
+          <th>q3_roc_auc</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in table %}
+        <tr>
+          {% for col in row %}
+          <td> {{ col }} </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% if invaliduser %}
+    <h5> Wrong Username </h5>
+    {% endif %}
+    {% if invalidpassword %}
+    <h5> Wrong Password </h5>
+    {% endif %}
+    {% if invalidfile %}
+    <h5> Invalid number of Files </h5>
+    {% endif %}
+    {% if invalidfile1 %}
+    <h5> Invalid format of File for Q1 </h5>
+    {% endif %}
+    {% if invalidfile2 %}
+    <h5> Invalid format of File/s for Q2 </h5>
+    {% endif %}
+    {% if invalidfile3 %}
+    <h5> Invalid format of File/s for Q3 </h5>
+    {% endif %}
+    {% if result %}
+    <h5> Your Results </h5>
+    <p> {{ result }} </p>
+    {% endif %}
+    <form method='post' action='/' enctype="multipart/form-data">
+      <div class='row'>
+        <div class='six columns'>
+          <label for='username'> Username </label>
+          <input type='text' name='username'>
+        </div>
+        <div class='six columns'>
+          <label for='password'> Password </label>
+          <input type='password' name='password'>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='four columns'>
+          <label for='file1'> File1 for Q1 </label>
+          <input type='file' name='file1' accept='.txt'>
+        </div>
+        <div class='four columns'>
+          <div class='row'>
+            <div class='twelve columns'>
+              <label for='file21'> File21 for Q2 </label>
+              <input type='file' name='file21' accept='.txt'>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='twelve columns'>
+              <label for='file22'> File22 for Q2 </label>
+              <input type='file' name='file22' accept='.txt'>
+            </div>
+          </div>
+        </div>
+        <div class='four columns'>
+          <div class='row'>
+            <div class='twelve columns'>
+              <label for='file31'> File31 for Q3 </label>
+              <input type='file' name='file31' accept='.txt'>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='twelve columns'>
+              <label for='file32'> File32 for Q3 </label>
+              <input type='file' name='file32' accept='.txt'>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='twelve columns'>
+          <input type='submit'>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
